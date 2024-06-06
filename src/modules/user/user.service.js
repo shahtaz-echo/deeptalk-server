@@ -8,7 +8,15 @@ const allUsersService = async()=>{
     }
     return users;
 }
+const getMyProfileService = async(userId)=>{
+    const user = await User.findById({userId})
+    if(!user){
+        throw new ApiError(404, "User not found")
+    }
+    return user;
+}
 
 module.exports = {
-    allUsersService
+    allUsersService,
+    getMyProfileService
 }

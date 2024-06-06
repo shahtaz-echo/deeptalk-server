@@ -8,12 +8,9 @@ const auth =
   async (req, res, next) => {
     try {
       const token = req.headers.authorization?.split(" ")[1];
-      const cookieToken = req.cookies.jwt
-      console.log("cookie token", cookieToken)
       if (!token) {
         throw new ApiError(401, "You are not authorized");
       }
-
       // Verify token
       let verifiedUser = null;
       verifiedUser = jwt.verify(token, config.jwt.secret);
@@ -25,7 +22,6 @@ const auth =
       if (requiredRoles.length && !requiredRoles.includes(verifiedUser.role)) {
         throw new ApiError(403, "Forbidden");
       }
-
       next();
     } catch (error) {
       next(error);

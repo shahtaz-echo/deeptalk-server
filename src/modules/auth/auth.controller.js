@@ -4,6 +4,7 @@ const sendResponse = require("../../utiles/sendResponse");
 const AuthService = require("./auth.service");
 
 const login = catchAsync(async (req, res, next) => {
+  console.log("heat")
   const result = await AuthService.loginService(req.body);
   const { refreshToken, accessToken, user } = result;
 
@@ -17,7 +18,7 @@ const login = catchAsync(async (req, res, next) => {
 
   res.cookie("refreshToken", refreshToken, cookieOptions);
   res.cookie("accessToken", accessToken, cookieOptions);
-
+  console.log(user)
   sendResponse(res, {
     statusCode: 200,
     success: true,
