@@ -6,6 +6,6 @@ const router = express.Router();
 const {allUsers, getMyProfile} = require('./user.controller')
 
 router.get("/", auth(), allUsers);
-router.get("/my-profile", auth(), getMyProfile);
+router.get("/self-details", auth(), getMyProfile);
 
 module.exports = router

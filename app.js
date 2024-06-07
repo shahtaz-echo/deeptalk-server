@@ -4,8 +4,7 @@ const bodyParser = require("body-parser");
 
 const cookieParser = require("cookie-parser");
 const router = require("./src/routes/routes");
-
-const app = express();
+const {app} = require("./src/socket/socket")
 
 app.use(cookieParser());
 

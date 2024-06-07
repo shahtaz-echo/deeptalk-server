@@ -13,6 +13,7 @@ const allUsers = catchAsync(async(req, res, next)=>{
 })
 
 const getMyProfile = catchAsync(async(req, res, next)=>{
+    console.log("heat")
     const userId = req.user._id
     const result = await getMyProfileService(userId)
     sendResponse(res, {

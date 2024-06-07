@@ -1,7 +1,7 @@
 {
-  "name": "kaaichat-server",
+  "name": "nemochat-server",
   "version": "1.0.0",
-  "description": "Chatapp with room",
+  "description": "A chat application",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
