@@ -7,7 +7,7 @@ const User = require("../user/user.model");
 const loginService = async (payload) => {
   const { email, password } = payload;
   const isExistUser = await User.findOne({ email });
-
+  
   if (!isExistUser) {
     throw new ApiError(400, "User does not exist");
   }

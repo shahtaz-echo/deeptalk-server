@@ -1,0 +1,1 @@
+start /B code "D:\Projects\Deeptalk\deeptalk-server"

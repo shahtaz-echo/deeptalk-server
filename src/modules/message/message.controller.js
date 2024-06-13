@@ -16,7 +16,7 @@ const sendMessage = catchAsync(async (req, res, next) => {
 })
 
 const getMessages = catchAsync(async (req, res, next) => {
-    const senderId = req.userId
+    const senderId = req.user._id
     const receiverId = req.params.id
 
     const result = await getMessagesService(senderId, receiverId)

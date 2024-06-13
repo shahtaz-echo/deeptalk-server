@@ -3,9 +3,10 @@ const auth = require('../../middlewears/authHandler');
 
 const router = express.Router();
 
-const {allUsers, getMyProfile} = require('./user.controller')
+const {getMyUserList, getMyProfile, getSingleUser} = require('./user.controller')
 
-router.get("/", auth(), allUsers);
+router.get("/", auth(), getMyUserList);
 router.get("/self-details", auth(), getMyProfile);
+router.get("/:id", auth(), getSingleUser);
 
 module.exports = router

@@ -1,3 +1,4 @@
+const { getReceiverSocketId, io } = require('../../socket/socket');
 const Conversation = require('../conversation/conversation.model')
 const Message = require('./message.model')
 
@@ -11,7 +12,6 @@ const sendMessageService = async(payload, senderId, receiverId)=>{
             participants: [senderId, receiverId]
         })
     }
-
     const newMessage = new Message({
         senderId, receiverId, message
     })
@@ -22,11 +22,15 @@ const sendMessageService = async(payload, senderId, receiverId)=>{
 
     await Promise.all([conversation.save(), newMessage.save()])
     
+    const receiverSocketId = getReceiverSocketId(receiverId)
+    if(receiverSocketId){
+        io.to(receiverSocketId).emit("newMessage", newMessage)
+    }
+
     return newMessage;
 }
 
 const getMessagesService = async(senderId, receiverId)=>{
-
     let conversation = await Conversation.findOne({ 
         participants: {$all:[senderId, receiverId]}
     }).populate("messages")
