@@ -1,0 +1,17 @@
+services:
+  #Node js api services
+  api:
+    build: .
+    ports:
+      - 4000:5000
+    volumes:
+      - .:usr/src/app
+    environment:
+      NODE_ENV: DEVELOPMENT
+      PORT: 5000
+      DATABASE_URL: mongodb+srv://shahtaz67:cPpwl1dS4xhvRjbk@init0.scsbest.mongodb.net/red-shift
+      BCRYPT_SALT_ROUNDS: 12
+      JWT_SECRET: 96HtILFYJkRnrPB77eL8j81RiXrB1GM0S5TO19eJIuBPqGXOSgJYQLDFRF9Kjp1JwovvAwPUvsnNrw
+      JWT_REFRESH_SECRET: 59WI4j0W90kySy5w2iqxCzaXF5FZdyHlZwee7fgEQw42dI+e3qIPE4mpw8QKfY1+0Xw48gfTEYyA4OUzScM6LzUSuDv
+      JWT_EXPIRES_IN: 12d
+      JWT_REFRESH_EXPIRES_IN: 5d
