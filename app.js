@@ -4,11 +4,11 @@ const bodyParser = require("body-parser");
 
 const cookieParser = require("cookie-parser");
 const router = require("./src/routes/routes");
-const {app} = require("./src/socket/socket")
+const { app } = require("./src/socket/socket");
 
 app.use(cookieParser());
 
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = ["http://localhost:5173", "http://localhost:5174"];
 
 app.use(
   cors({
